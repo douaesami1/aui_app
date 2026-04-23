@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- Brand Colors (AUI / AdmitIQ) --- */
+  --color-green: #16A34A;         /* L-khder s-s7i7 dial l-buttons w indicators */
+  --color-green-dark: #15803D;    /* Darker shade l-hover */
+  --color-green-faint: #F0FDF4;   /* Background l-khfif dial active items */
+  
+  /* --- Neutral Palette (Greys) --- */
+  --color-g-50: #F8FAFC;          /* Background dial l-app l-kbir */
+  --color-g-100: #F1F5F9;         /* Borders dial l-cards */
+  --color-g-200: #E2E8F0;         /* Dividers */
+  --color-g-400: #94A3B8;         /* Text sghir dial labels */
+  --color-g-500: #64748B;         /* Secondary text */
+  --color-g-600: #475569;         /* Icons f sidebar */
+  --color-g-900: #0F172A;         /* Bold text w headings */
+
+  /* --- Status & Accents --- */
+  --color-amber: #D97706;         /* Warning (Pending review) */
+  --color-amber-light: #FEF3C7;
+  --color-blue-accent: #3B82F6;   /* Funnel top bar */
+  --color-cyan-accent: #06B6D4;   /* Funnel middle bar */
+
+  /* --- Layout & Effects --- */
+  --radius-card: 12px;            /* L-qnat dial l-buttons */
+  --radius-card-lg: 16px;         /* L-qnat dial l-cards */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+}
