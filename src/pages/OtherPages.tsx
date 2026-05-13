@@ -131,41 +131,11 @@ export function Completeness() {
 
 // ── Requirements ──────────────────────────────────────────────────
 
-export function Requirements() {
-  return (
-    <div className="animate-fade-up">
-      <div className="mb-6">
-        <h1 className="text-[26px] font-extrabold text-g-900">Requirements</h1>
-        <p className="text-sm text-g-500 mt-1">AUI admission criteria and decision logic by applicant type.</p>
-      </div>
-      
-     
-    </div>
-  )
-}
+
 
 // ── Process Flow ──────────────────────────────────────────────────
 
-export function Flow() {
-  const steps = [
-    { icon: '📥', title: 'Application Submitted',  desc: 'Applicant fills form, uploads documents',   type: 'human' },
-    { icon: '🔍', title: 'Auto Pre-screening',      desc: 'Missing fields flagged, hard rules checked', type: 'ai'    },
-    { icon: '🤖', title: 'AI Scoring (v2.4)',       desc: 'XGBoost model scores all dimensions',        type: 'ai'    },
-    { icon: '📊', title: 'SHAP Explainability',     desc: 'Feature contributions generated per app',    type: 'ai'    },
-    { icon: '👔', title: 'Officer Review',           desc: 'Human reviews borderline / flagged cases',   type: 'human' },
-    { icon: '🏛', title: 'Committee Sign-off',      desc: 'School committee final approval',             type: 'human' },
-    { icon: '✉️', title: 'Offer Sent',              desc: 'Admission letter dispatched to applicant',   type: 'human' },
-  ]
-  return (
-    <div className="animate-fade-up">
-      <div className="mb-6">
-        <h1 className="text-[26px] font-extrabold text-g-900">Process Flow</h1>
-        <p className="text-sm text-g-500 mt-1">End-to-end AI + human decision workflow.</p>
-      </div>
-      
-    </div>
-  )
-}
+
 
 // ── Grades ────────────────────────────────────────────────────────
 
@@ -186,7 +156,43 @@ export function Grades() {
         <h1 className="text-[26px] font-extrabold text-g-900">Grades Distribution</h1>
         <p className="text-sm text-g-500 mt-1">University-wide grade analysis across 23 departments.</p>
       </div>
-      
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 mb-5">
+        <StatCard label="Avg University GPA" value="2.98" valueColor="text-green" subtitle="All programs"/>
+        <StatCard label="A / A+ Rate"         value="18.4%" valueColor="text-blue"  subtitle="High performers"/>
+        <StatCard label="Failing Rate"         value="6.2%"  valueColor="text-red"   subtitle="Below passing"/>
+        <StatCard label="Depts Analyzed"       value="23"    valueColor="text-amber" subtitle="All schools"/>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card>
+          <CardHeader title="Grade Distribution" icon="📊"/>
+          {grades.map(g => (
+            <div key={g.label} className="flex items-center gap-2.5 mb-2">
+              <div className="font-mono text-xs font-bold text-g-700 w-6 text-center">{g.label}</div>
+              <div className="flex-1 h-6 bg-g-100 rounded-lg overflow-hidden">
+                <div className="h-full rounded-lg flex items-center pl-2.5 text-xs font-bold text-white"
+                  style={{ width: `${g.pct}%`, background: g.color }}>
+                  {g.pct}%
+                </div>
+              </div>
+              <div className="font-mono text-xs font-bold text-g-700 w-8 text-right">{g.pct}%</div>
+            </div>
+          ))}
+        </Card>
+        <Card>
+          <CardHeader title="GPA by Program" icon="🎓"/>
+          <div className="flex flex-col gap-2">
+            {[
+              { label: 'BSGE',  val: 3.21, w: 80, g: 'linear-gradient(90deg,#15803d,#16a34a)' },
+              { label: 'PMBA',  val: 3.09, w: 77, g: 'linear-gradient(90deg,#059669,#34d399)' },
+              { label: 'MSCYB', val: 2.97, w: 74, g: 'linear-gradient(90deg,#2563eb,#60a5fa)' },
+              { label: 'BAIS',  val: 2.84, w: 71, g: 'linear-gradient(90deg,#1d4ed8,#93c5fd)' },
+              { label: 'BBA',   val: 2.71, w: 68, g: 'linear-gradient(90deg,#d97706,#fbbf24)' },
+            ].map(r => (
+              <FunnelRow key={r.label} label={r.label} value={r.val} width={r.w} gradient={r.g}/>
+            ))}
+          </div>
+        </Card>
+      </div>
     </div>
   )
 }
